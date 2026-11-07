@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecycleSmart - Local Recycling Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <h2>♻ RecycleSmart</h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#materials">Materials</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#favorites">Favourites</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Recycle Today, Save Tomorrow 🌍</h1>
+
+            <p>
+                Find the right way to dispose of waste and
+                discover recycling facilities near you.
+            </p>
+
+            <a href="#materials" class="btn">Explore Recycling Guide</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>Why Recycling Matters?</h2>
+
+        <p>
+            Recycling helps reduce pollution, conserve natural
+            resources and create a cleaner environment.
+            Small actions can make a big difference.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🌱 Protect Nature</h3>
+                <p>Reduce pollution and protect the environment.</p>
+            </div>
+
+            <div class="card">
+                <h3>♻ Save Resources</h3>
+                <p>Reuse materials and reduce unnecessary waste.</p>
+            </div>
+
+            <div class="card">
+                <h3>🌍 Clean Future</h3>
+                <p>Help create a healthier and cleaner planet.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Material Search Section -->
+    <section id="materials" class="materials">
+
+        <h2>Find How to Recycle</h2>
+
+        <p>Search for a material to know how to dispose of it.</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput"
+                placeholder="Search plastic, paper, glass...">
+
+            <button onclick="searchMaterial()">Search</button>
+        </div>
+
+        <div id="materialResults" class="cards">
+
+            <div class="card">
+                <h3>Plastic</h3>
+                <p>Clean plastic bottles and containers before recycling.</p>
+                <button onclick="showMaterial('Plastic')">View Details</button>
+            </div>
+
+            <div class="card">
+                <h3>Paper</h3>
+                <p>Keep paper clean and dry before recycling.</p>
+                <button onclick="showMaterial('Paper')">View Details</button>
+            </div>
+
+            <div class="card">
+                <h3>Glass</h3>
+                <p>Separate glass bottles and jars from other waste.</p>
+                <button onclick="showMaterial('Glass')">View Details</button>
+            </div>
+
+            <div class="card">
+                <h3>Metal</h3>
+                <p>Clean metal cans before placing them in recycling bins.</p>
+                <button onclick="showMaterial('Metal')">View Details</button>
+            </div>
+
+            <div class="card">
+                <h3>Electronic Waste</h3>
+                <p>Take old electronic devices to authorised e-waste collection centres.</p>
+                <button onclick="showMaterial('Electronic Waste')">View Details</button>
+            </div>
+
+            <div class="card">
+                <h3>Organic Waste</h3>
+                <p>Separate food scraps and suitable garden waste for composting.</p>
+                <button onclick="showMaterial('Organic Waste')">View Details</button>
+            </div>
+
+        </div>
+
+        <div id="details" class="details"></div>
+
+    </section>
+
+    <!-- Facility Directory -->
+    <section id="facilities" class="facilities">
+
+        <h2>Recycling Facility Directory</h2>
+
+        <p>Find recycling facilities according to your location.</p>
+
+        <select id="locationFilter" onchange="filterFacilities()">
+            <option value="All">All Locations</option>
+            <option value="Nawanshahr">Nawanshahr</option>
+            <option value="Jalandhar">Jalandhar</option>
+            <option value="Ludhiana">Ludhiana</option>
+            <option value="Chandigarh">Chandigarh</option>
+        </select>
+
+        <div id="facilityResults" class="cards">
+
+            <div class="card facility-card" data-location="Nawanshahr">
+                <h3>Nawanshahr Collection Point</h3>
+                <p>Location: Nawanshahr, Punjab</p>
+                <p>Type: General recyclable waste</p>
+            </div>
+
+            <div class="card facility-card" data-location="Jalandhar">
+                <h3>Jalandhar Recycling Centre</h3>
+                <p>Location: Jalandhar, Punjab</p>
+                <p>Type: Plastic and paper</p>
+            </div>
+
+            <div class="card facility-card" data-location="Ludhiana">
+                <h3>Ludhiana Waste Collection Centre</h3>
+                <p>Location: Ludhiana, Punjab</p>
+                <p>Type: General recyclable waste</p>
+            </div>
+
+            <div class="card facility-card" data-location="Chandigarh">
+                <h3>Chandigarh Recycling Point</h3>
+                <p>Location: Chandigarh</p>
+                <p>Type: Dry waste and recyclables</p>
+            </div>
+
+        </div>
+
+        <p class="notice">
+            Note: The facility entries are sample project data.
+            Verify actual facility names, addresses and services
+            before using them for real disposal.
+        </p>
+
+    </section>
+
+    <!-- Favourites Section -->
+    <section id="favorites" class="favorites">
+
+        <h2>My Favourite Materials ❤️</h2>
+
+        <p>Save materials that you frequently search for.</p>
+
+        <div id="favoriteList" class="cards">
+            <p>No favourites added yet.</p>
+        </div>
+
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFAQ(this)">1. Why should we recycle?</h3>
+            <p>Recycling reduces waste, saves natural resources and helps protect the environment.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFAQ(this)">2. Can plastic bottles be recycled?</h3>
+            <p>Many plastic bottles can be recycled. Empty and clean them first, and check local recycling rules.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFAQ(this)">3. What is e-waste?</h3>
+            <p>E-waste includes discarded electronic devices such as computers, mobile phones and batteries.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFAQ(this)">4. What is composting?</h3>
+            <p>Composting is the process of converting suitable organic waste into nutrient-rich material.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3 onclick="toggleFAQ(this)">5. How can I find recycling facilities?</h3>
+            <p>You can use our facility directory and select your location to view available entries.</p>
+        </div>
+
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin" class="admin">
+
+        <h2>Admin Content Management</h2>
+
+        <p>Add new materials to the recycling guide.</p>
+
+        <div class="admin-form">
+
+            <input type="text" id="adminMaterial"
+                placeholder="Enter material name">
+
+            <input type="text" id="adminInstruction"
+                placeholder="Enter disposal instruction">
+
+            <button onclick="addMaterial()">Add Material</button>
+
+        </div>
+
+        <div id="adminResults" class="cards"></div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>♻ RecycleSmart</h3>
+
+        <p>Making recycling simple for everyone.</p>
+
+        <p>© 2026 RecycleSmart | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
